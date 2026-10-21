@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" width="400" height="225" role="img" aria-label="Customer support chat">
+  <defs>
+    <linearGradient id="backdrop" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#c2d0e4" />
+      <stop offset="0.45" stop-color="#c8c1d9" />
+      <stop offset="0.78" stop-color="#ccb4c5" />
+      <stop offset="1" stop-color="#c9a9ac" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.2" cy="0.15" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+    </radialGradient>
+    <filter id="lift" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#2a2238" flood-opacity="0.16" />
+    </filter>
+    <marker id="head" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 1 L9 5 L1 9 Z" fill="#8878a8" />
+    </marker>
+  </defs>
+  <rect width="400" height="225" rx="16" fill="url(#backdrop)" />
+  <rect width="400" height="225" rx="16" fill="url(#glow)" />
+  <g fill="none" stroke="#8878a8" stroke-opacity="0.7" stroke-width="1.8" stroke-linecap="round" marker-end="url(#head)">
+    <path d="M94 89.46153846153847 C107.33333333333333 89.46153846153847 107.33333333333333 132.92307692307693 120.66666666666666 132.92307692307693" />
+    <path d="M94 89.46153846153847 C107.33333333333333 89.46153846153847 107.33333333333333 46 120.66666666666666 46" />
+    <path d="M184.66666666666666 132.92307692307693 C198 132.92307692307693 198 132.92307692307693 211.33333333333334 132.92307692307693" />
+    <path d="M275.33333333333337 132.92307692307693 C288.6666666666667 132.92307692307693 288.6666666666667 75 302 75" />
+    <path d="M275.33333333333337 132.92307692307693 C288.6666666666667 132.92307692307693 288.6666666666667 159 302 159" />
+  </g>
+  <g font-family="'Geist Sans', 'Inter', ui-sans-serif, system-ui, sans-serif" font-size="10.5" font-weight="500" fill="#24212c">
+  <g>
+    <rect x="38" y="63.46153846153847" width="52" height="52" rx="16" fill="#c2d0e4" filter="url(#lift)" />
+    <g transform="translate(52 77.46153846153847)" fill="none" stroke="#24212c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 14.286V4a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+  <path d="M20 9a2 2 0 0 1 2 2v10.286a.71.71 0 0 1-1.212.502l-2.202-2.202A2 2 0 0 0 17.172 19H10a2 2 0 0 1-2-2v-1" /></g>
+    <g transform="translate(36 61.46153846153847)">
+      <circle r="11" fill="#ffffff" filter="url(#lift)" />
+      <g transform="translate(-7 -7) scale(0.5833)" fill="none" stroke="#8878a8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></g>
+    </g>
+    <text x="64" y="130.46153846153845" text-anchor="middle"><tspan x="64" dy="0">Answer</tspan></text>
+  </g>
+  <g>
+    <rect x="128.66666666666666" y="20" width="52" height="52" rx="16" fill="#85aeab" filter="url(#lift)" />
+    <g transform="translate(142.66666666666666 34)" fill="none" stroke="#24212c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z" />
+  <path d="M21 16v2a4 4 0 0 1-4 4h-5" /></g>
+    
+    <text x="154.66666666666666" y="87" text-anchor="middle"><tspan x="154.66666666666666" dy="0">Hand over to</tspan><tspan x="154.66666666666666" dy="12">support</tspan></text>
+  </g>
+  <g>
+    <rect x="128.66666666666666" y="106.92307692307693" width="52" height="52" rx="16" fill="#8c987f" filter="url(#lift)" />
+    <g transform="translate(142.66666666666666 120.92307692307693)" fill="none" stroke="#24212c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+  <path d="m9 14 2 2 4-4" /></g>
+    
+    <text x="154.66666666666666" y="173.92307692307693" text-anchor="middle"><tspan x="154.66666666666666" dy="0">Check the refund</tspan><tspan x="154.66666666666666" dy="12">request</tspan></text>
+  </g>
+  <g>
+    <rect x="219.33333333333334" y="106.92307692307693" width="52" height="52" rx="16" fill="#bdac8a" filter="url(#lift)" />
+    <g transform="translate(233.33333333333334 120.92307692307693)" fill="none" stroke="#24212c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 11 2 2 4-4" />
+  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+  <circle cx="9" cy="7" r="4" /></g>
+    
+    <text x="245.33333333333334" y="173.92307692307693" text-anchor="middle"><tspan x="245.33333333333334" dy="0">Approve the</tspan><tspan x="245.33333333333334" dy="12">refund</tspan></text>
+  </g>
+  <g>
+    <rect x="310" y="49" width="52" height="52" rx="16" fill="#85aeab" filter="url(#lift)" />
+    <g transform="translate(324 63)" fill="none" stroke="#24212c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h8" />
+  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  <path d="m16 19 2 2 4-4" /></g>
+    
+    <text x="336" y="116" text-anchor="middle"><tspan x="336" dy="0">Refund approved</tspan></text>
+  </g>
+  <g>
+    <rect x="310" y="133" width="52" height="52" rx="16" fill="#bca195" filter="url(#lift)" />
+    <g transform="translate(324 147)" fill="none" stroke="#24212c" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 13V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h9" />
+  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+  <path d="m17 17 4 4" />
+  <path d="m21 17-4 4" /></g>
+    
+    <text x="336" y="200" text-anchor="middle"><tspan x="336" dy="0">Refund rejected</tspan></text>
+  </g>
+  </g>
+</svg>

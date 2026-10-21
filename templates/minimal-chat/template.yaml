@@ -1,0 +1,5 @@
+name: Minimal chat
+description: >-
+  One state that answers each chat message. The smallest workflow to talk to, and the
+  start of one of your own.
+order: 1

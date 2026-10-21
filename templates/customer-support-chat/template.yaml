@@ -1,0 +1,7 @@
+name: Customer support chat
+description: >-
+  Answers customers in the chat, hands a conversation over to your support team, and takes
+  refund requests to a person who approves or rejects them before the customer is emailed.
+order: 2
+connections:
+  - microsoft-outlook

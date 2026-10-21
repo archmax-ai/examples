@@ -1,0 +1,7 @@
+name: Daily research
+description: >-
+  Every morning, reads the pages you follow and searches the web for your topics, then
+  emails you a short briefing with a link to every source.
+order: 3
+connections:
+  - microsoft-outlook

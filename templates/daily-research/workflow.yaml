@@ -1,0 +1,98 @@
+title: Daily research
+instructions: |-
+  You research the news for one reader and send them a short morning briefing. Report only
+  what the sources say, link every item to its source, and leave out what you cannot verify.
+runtime:
+  engine: archmax-harness
+  version: "2"
+tools:
+  allow_always:
+    - ls
+    - read_file
+    - write_file
+    - edit_file
+    - glob
+    - grep
+    - copy_file
+    - move_file
+    - remove_file
+    - write_todos
+    - archmax_eval
+    - archmax_run
+metadata:
+  notes:
+    - id: n1
+      text: |-
+        To do: list the pages and the topics to follow in the instructions of Research. It runs every day at 07:00 UTC: change the time or the time zone on its schedule trigger.
+      x: 0
+      y: 320
+      width: 288
+      height: 176
+      color: amber
+    - id: n2
+      text: |-
+        To do: connect Microsoft Outlook, and replace you@example.com with your address in the instructions and the Send Email tool of Send the briefing.
+      x: 500
+      y: 320
+      width: 288
+      height: 160
+      color: amber
+    - id: n3
+      text: |-
+        The browser tools come from the Browser service. If Research cannot open a page or search the web, ask your operator to deploy it.
+      x: 0
+      y: 528
+      width: 288
+      height: 144
+      color: blue
+states:
+  research:
+    title: Research
+    triggers:
+      daily:
+        type: schedule
+        cron: "0 7 * * *"
+        timezone: UTC
+    instructions: |-
+      Prepare today's briefing.
+
+      1. Open each of these pages with the browser and note what is new since yesterday:
+         - https://www.reuters.com/technology/
+         - https://techcrunch.com/category/artificial-intelligence/
+      2. Search the web for news of the last 24 hours on each of these topics:
+         - AI agents in enterprise software
+         - The EU AI Act
+      3. Pick the five to eight items that matter most. For each, write a headline, two
+         sentences on what happened and why it matters, and the link to its source.
+
+      Write the briefing to scratchpad/briefing.md in Markdown: a one-line summary of the day
+      at the top, then the items. Once it is written, advance to send-briefing.
+    tools:
+      allow:
+        - browser__fetch_url
+        - browser__web_search
+    transitions:
+      - to: send-briefing
+        description: The briefing is written to scratchpad/briefing.md.
+    metadata:
+      x: 0
+      y: 40
+      color: sage
+      icon: Globe
+  send-briefing:
+    title: Send the briefing
+    instructions: >-
+      Read scratchpad/briefing.md and email it to you@example.com with the subject "Daily
+      research" followed by today's date. Send the body as HTML: turn the Markdown headings,
+      lists and links into HTML and keep every link. Send exactly one email.
+    tools:
+      allow:
+        - tool: microsoft-outlook__send-email
+          source: ap
+          args:
+            recipients: you@example.com
+    metadata:
+      x: 500
+      y: 40
+      color: teal
+      icon: Send

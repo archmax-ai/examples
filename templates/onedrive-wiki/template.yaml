@@ -1,0 +1,7 @@
+name: OneDrive wiki
+description: >-
+  Turns the documents you drop into a OneDrive folder into a wiki the agent writes and keeps
+  up to date, and answers questions from it in the chat, citing its pages.
+order: 4
+connections:
+  - microsoft-onedrive

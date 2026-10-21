@@ -1,0 +1,197 @@
+title: Customer support chat
+instructions: |-
+  You are the customer support assistant of our shop. Be friendly, brief and precise, and
+  answer in the language the customer writes in. Never promise a refund, a delivery date or
+  a price you have not been given: say what you know, and offer to hand over to a person
+  instead.
+runtime:
+  engine: archmax-harness
+  version: "2"
+tools:
+  allow_always:
+    - ls
+    - read_file
+    - write_file
+    - edit_file
+    - glob
+    - grep
+    - copy_file
+    - move_file
+    - remove_file
+    - write_todos
+    - archmax_eval
+    - archmax_run
+metadata:
+  notes:
+    - id: n1
+      text: |-
+        To do: give Answer your help-center articles. Upload them on the Files page, or mount your SharePoint folder there, then grant the folder to Answer under File mounts.
+      x: 0
+      y: 448
+      width: 288
+      height: 160
+      color: amber
+    - id: n2
+      text: |-
+        To do: replace support@example.com with your support team's address, in the instructions and the Send Email tool of Hand over to support.
+      x: 848
+      y: 0
+      width: 272
+      height: 144
+      color: amber
+    - id: n3
+      text: |-
+        To do: write your refund policy into the instructions of Check the refund request, and add Stripe's Search Charges (Agent) there so it can find the payment.
+      x: 448
+      y: 640
+      width: 288
+      height: 160
+      color: amber
+    - id: n4
+      text: |-
+        To do: name who decides refunds under the approvers of Approve the refund. To pay a refund out, add Stripe's Create Refund (Agent) to Refund approved and connect Stripe.
+      x: 960
+      y: 640
+      width: 288
+      height: 176
+      color: amber
+    - id: n5
+      text: |-
+        To do: connect Microsoft Outlook. Hand over to support and both refund states send their email through its Send Email tool.
+      x: 1904
+      y: 384
+      width: 272
+      height: 144
+      color: amber
+states:
+  answer:
+    title: Answer
+    triggers:
+      chat:
+        session: triggers.-1.threadId
+        examples:
+          - Where is my order?
+          - I'd like to return a product and get my money back.
+          - Can I talk to a person?
+    instructions: >-
+      Answer the customer's question; the prompt includes the conversation so far. Use the
+      help-center articles in your files where they cover it, and keep the answer to a few
+      sentences. When the customer asks for a refund, advance to check-refund. When they ask
+      for a person, or the question needs one (a complaint, a legal matter, anything the
+      articles do not answer), advance to handover. Otherwise end your turn with the answer:
+      the next message continues here.
+    transitions:
+      - to: check-refund
+        description: The customer asks for a refund.
+      - to: handover
+        description: The customer asks for a person, or the question needs one.
+    metadata:
+      x: 0
+      y: 200
+      color: blue
+      icon: MessagesSquare
+  handover:
+    title: Hand over to support
+    instructions: >-
+      Hand the conversation over to the support team. If you do not have the customer's
+      email address yet, ask for it and wait for the answer. Then send one email to
+      support@example.com with the subject "Support request from" followed by the
+      customer's email, and a body giving the customer's name if known, their email, their
+      question in their own words, and what you have already answered. Finally tell the
+      customer that a person will reply by email, usually within one business day.
+    tools:
+      allow:
+        - tool: microsoft-outlook__send-email
+          source: ap
+          args:
+            recipients: support@example.com
+    metadata:
+      x: 500
+      y: 0
+      color: teal
+      icon: Headset
+  check-refund:
+    title: Check the refund request
+    requires:
+      - customer_email
+      - refund_products
+    instructions: >-
+      Collect what a refund request needs: the email address the order was placed with, the
+      products to refund with their quantities, the order number if the customer has it,
+      and the reason. Ask for whatever is missing, one question at a time. Store the email
+      as customer_email and the products as refund_products with archmax_set_variables.
+      Then write the request to scratchpad/refund-request.md (the customer's email, the
+      order number, each product with its quantity, the reason, and the relevant lines of
+      the conversation) and advance to refund-decision with that file as evidence. If the
+      customer no longer wants a refund, call archmax_reset to go back to answering their
+      questions.
+    transitions:
+      - to: refund-decision
+        description: >-
+          The request names the customer's email and the products, and is written to
+          scratchpad/refund-request.md.
+    metadata:
+      x: 500
+      y: 400
+      color: sage
+      icon: ClipboardCheck
+  refund-decision:
+    type: human
+    title: Approve the refund
+    summary: A person approves or rejects the refund request.
+    instructions: >-
+      Check the request in scratchpad/refund-request.md against the refund policy: the
+      order, the products and the reason. Approve to refund the products, or reject and say
+      why in the note to the agent. The customer is emailed either way.
+    evidence:
+      - scratchpad/refund-request.md
+    transitions:
+      - to: refund-approved
+        type: approve
+        description: Approve the refund.
+      - to: refund-rejected
+        type: reject
+        description: Reject the refund.
+    metadata:
+      x: 1000
+      y: 400
+      color: amber
+      icon: UserCheck
+  refund-approved:
+    title: Refund approved
+    instructions: >-
+      The refund was approved. Email the customer at customer_email (read it with
+      archmax_get_variables) with the subject "Your refund is approved": name the refunded
+      products from scratchpad/refund-request.md, and say the money goes back to the
+      original payment method within 5 to 10 business days. Pass on the approver's note
+      when it is meant for the customer. Then tell the customer in the chat, in one or two
+      sentences, that the refund is approved and the confirmation is in their inbox.
+    tools:
+      allow:
+        - tool: microsoft-outlook__send-email
+          source: ap
+          args:
+            recipients: "${{customer_email}}"
+    metadata:
+      x: 1500
+      y: 280
+      color: teal
+      icon: MailCheck
+  refund-rejected:
+    title: Refund rejected
+    instructions: >-
+      The refund was rejected. Email the customer at customer_email (read it with
+      archmax_get_variables) with the subject "About your refund request": say politely
+      that the refund cannot be made and give the reason from the decision's note in your
+      own words. Then tell the customer the same in the chat, in one or two sentences.
+    tools:
+      allow:
+        - tool: microsoft-outlook__send-email
+          source: ap
+          args:
+            recipients: "${{customer_email}}"
+    metadata:
+      x: 1500
+      y: 520
+      color: rose
+      icon: MailX

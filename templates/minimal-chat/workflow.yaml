@@ -1,0 +1,60 @@
+title: Minimal chat
+instructions: |-
+  You are a helpful assistant for the people of this organization. Answer in the language
+  the user writes in, keep answers short and concrete, and say plainly when you do not know
+  something.
+runtime:
+  engine: archmax-harness
+  version: "2"
+tools:
+  allow_always:
+    - ls
+    - read_file
+    - write_file
+    - edit_file
+    - glob
+    - grep
+    - copy_file
+    - move_file
+    - remove_file
+    - write_todos
+    - archmax_eval
+    - archmax_run
+metadata:
+  notes:
+    - id: n1
+      text: |-
+        To do: say what this assistant is for. Open the workflow settings and write its purpose, who it serves and its tone into the instructions.
+      x: 416
+      y: 0
+      width: 272
+      height: 144
+      color: amber
+    - id: n2
+      text: |-
+        To do: let it answer from your documents. Upload them on the Files page, or mount your SharePoint folder there, then grant the folder to Answer under File mounts.
+      x: 416
+      y: 176
+      width: 272
+      height: 160
+      color: amber
+states:
+  answer:
+    title: Answer
+    triggers:
+      chat:
+        session: triggers.-1.threadId
+        examples:
+          - What can you help me with?
+          - Summarize this text in three bullet points.
+          - Draft a short, friendly reply to this email.
+    instructions: >-
+      Answer the user's message; the prompt includes the conversation so far, and your
+      final answer is the chat reply. When the request is unclear, ask one short question
+      back instead of guessing. This state has no transitions, so each answer ends the turn
+      and the next message continues here.
+    metadata:
+      x: 0
+      y: 40
+      color: blue
+      icon: MessageCircle
