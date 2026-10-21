@@ -28,6 +28,7 @@ const PALETTE = {
   purple: "#8878a8",
   rust: "#bc8081",
   amber: "#bdac8a",
+  yellow: "#f6e7a6",
   teal: "#85aeab",
 };
 const BRAND = "#8878a8";

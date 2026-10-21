@@ -28,7 +28,7 @@ metadata:
       y: 320
       width: 288
       height: 176
-      color: amber
+      color: yellow
     - id: n2
       text: |-
         To do: connect Microsoft Outlook, and replace you@example.com with your address in the instructions and the Send Email tool of Send the briefing.
@@ -36,7 +36,7 @@ metadata:
       y: 320
       width: 288
       height: 160
-      color: amber
+      color: yellow
     - id: n3
       text: |-
         The browser tools come from the Browser service. If Research cannot open a page or search the web, ask your operator to deploy it.

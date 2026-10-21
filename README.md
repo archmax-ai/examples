@@ -61,7 +61,7 @@ connections:
   collection serves it, and a new environment without one is asked to connect it.
 - Every state carries `metadata.x`, `metadata.y`, `metadata.color` and `metadata.icon` (a
   lucide icon name). The canvas and the preview both draw from them.
-- What a template cannot know — an address, a policy, a folder, a tool to add — is an amber
+- What a template cannot know — an address, a policy, a folder, a tool to add — is a yellow
   note in `metadata.notes` beginning "To do:", placed beside the states it is about.
 - The workflow validates with no error and no warning.
 

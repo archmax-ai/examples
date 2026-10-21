@@ -16,12 +16,12 @@ rules are the contract; this file says how to meet them.
 - Give every transition a description the agent can choose by.
 - Place every state (`metadata.x`, `metadata.y`; columns 500 apart, rows 200), and give it a
   `metadata.color` from the appearance palette (`sage`, `rose`, `blue`, `purple`, `rust`,
-  `amber`, `teal`) and a `metadata.icon`, a lucide icon name such as `MessagesSquare`.
+  `amber`, `yellow`, `teal`) and a `metadata.icon`, a lucide icon name such as `MessagesSquare`.
 
 ## What the template cannot know
 
 Leave it as a note, never as a guess in the instructions. A note in `metadata.notes` is
-`{ id, text, x, y, width, height, color }`: an amber one beginning "To do:" for each thing the
+`{ id, text, x, y, width, height, color }`: a yellow one beginning "To do:" for each thing the
 person has to fill in or connect, placed beside the states it is about, and a blue one for an
 explanation. Name the state, the tool or the trigger the to-do is about by the title the
 canvas shows.
@@ -38,5 +38,5 @@ list, and `connections` names every collection whose tools it grants.
 - [ ] `template.yaml` has `name`, `description`, `order` and `connections`.
 - [ ] `workflow.yaml` validates with no error and no warning, and lists the default tools.
 - [ ] No tool or trigger names a connection.
-- [ ] Every state has its place, colour and icon; every to-do is an amber note.
+- [ ] Every state has its place, colour and icon; every to-do is a yellow note.
 - [ ] `preview.svg` is drawn by `npm run previews`, not edited by hand.

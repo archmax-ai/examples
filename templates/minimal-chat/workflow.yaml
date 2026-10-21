@@ -29,7 +29,7 @@ metadata:
       y: 0
       width: 272
       height: 144
-      color: amber
+      color: yellow
     - id: n2
       text: |-
         To do: let it answer from your documents. Upload them on the Files page, or mount your SharePoint folder there, then grant the folder to Answer under File mounts.
@@ -37,7 +37,7 @@ metadata:
       y: 176
       width: 272
       height: 160
-      color: amber
+      color: yellow
 states:
   answer:
     title: Answer

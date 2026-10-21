@@ -30,7 +30,7 @@ metadata:
       y: 448
       width: 288
       height: 160
-      color: amber
+      color: yellow
     - id: n2
       text: |-
         To do: replace support@example.com with your support team's address, in the instructions and the Send Email tool of Hand over to support.
@@ -38,7 +38,7 @@ metadata:
       y: 0
       width: 272
       height: 144
-      color: amber
+      color: yellow
     - id: n3
       text: |-
         To do: write your refund policy into the instructions of Check the refund request, and add Stripe's Search Charges (Agent) there so it can find the payment.
@@ -46,7 +46,7 @@ metadata:
       y: 640
       width: 288
       height: 160
-      color: amber
+      color: yellow
     - id: n4
       text: |-
         To do: name who decides refunds under the approvers of Approve the refund. To pay a refund out, add Stripe's Create Refund (Agent) to Refund approved and connect Stripe.
@@ -54,7 +54,7 @@ metadata:
       y: 640
       width: 288
       height: 176
-      color: amber
+      color: yellow
     - id: n5
       text: |-
         To do: connect Microsoft Outlook. Hand over to support and both refund states send their email through its Send Email tool.
@@ -62,7 +62,7 @@ metadata:
       y: 384
       width: 272
       height: 144
-      color: amber
+      color: yellow
 states:
   answer:
     title: Answer

@@ -31,7 +31,7 @@ metadata:
       y: 0
       width: 288
       height: 144
-      color: amber
+      color: yellow
     - id: n2
       text: |-
         To do: on the New File trigger of Ingest a document, pick Wiki/Inbox as the folder to watch. Every file dropped there becomes wiki pages.
@@ -39,7 +39,7 @@ metadata:
       y: 176
       width: 288
       height: 160
-      color: amber
+      color: yellow
     - id: n3
       text: |-
         Ask the wiki answers from the pages Ingest a document wrote, and links them. Ask it to keep a good answer as a page of its own.
