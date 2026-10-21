@@ -6,7 +6,8 @@
  *
  *   npm install && npm run previews
  *
- * A preview is drawn, never edited by hand, so every template's looks the same.
+ * A preview is drawn, never edited by hand, so every template's looks the same. Its corners are
+ * square: whatever shows it, a card or a page, rounds them as it rounds itself.
  */
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -189,8 +190,8 @@ function render(spec) {
       <path d="M1 1 L9 5 L1 9 Z" fill="${BRAND}" />
     </marker>
   </defs>
-  <rect width="${WIDTH}" height="${HEIGHT}" rx="16" fill="url(#backdrop)" />
-  <rect width="${WIDTH}" height="${HEIGHT}" rx="16" fill="url(#glow)" />
+  <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#backdrop)" />
+  <rect width="${WIDTH}" height="${HEIGHT}" fill="url(#glow)" />
   <g fill="none" stroke="${BRAND}" stroke-opacity="0.7" stroke-width="1.8" stroke-linecap="round" marker-end="url(#head)">
     ${arrows.join("\n    ")}
   </g>

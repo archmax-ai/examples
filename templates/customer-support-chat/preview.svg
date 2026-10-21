@@ -17,8 +17,8 @@
       <path d="M1 1 L9 5 L1 9 Z" fill="#8878a8" />
     </marker>
   </defs>
-  <rect width="400" height="225" rx="16" fill="url(#backdrop)" />
-  <rect width="400" height="225" rx="16" fill="url(#glow)" />
+  <rect width="400" height="225" fill="url(#backdrop)" />
+  <rect width="400" height="225" fill="url(#glow)" />
   <g fill="none" stroke="#8878a8" stroke-opacity="0.7" stroke-width="1.8" stroke-linecap="round" marker-end="url(#head)">
     <path d="M94 89.46153846153847 C107.33333333333333 89.46153846153847 107.33333333333333 132.92307692307693 120.66666666666666 132.92307692307693" />
     <path d="M94 89.46153846153847 C107.33333333333333 89.46153846153847 107.33333333333333 46 120.66666666666666 46" />
