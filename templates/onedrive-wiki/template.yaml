@@ -5,3 +5,4 @@ description: >-
 order: 4
 connections:
   - microsoft-onedrive
+  - microsoft-sharepoint

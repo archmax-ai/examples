@@ -34,6 +34,21 @@ const PALETTE = {
 const BRAND = "#8878a8";
 const INK = "#24212c";
 
+/** WCAG relative luminance of a `#rrggbb` tone. */
+function luminance(hex) {
+  const [r, g, b] = [1, 3, 5].map((at) => parseInt(hex.slice(at, at + 2), 16) / 255);
+  const linear = (c) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+  return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b);
+}
+
+/**
+ * The ink a tile's icon takes, as the platform's canvas inks a card of that tone: white on a
+ * tone at most this light (sage, rose, purple, rust, amber, teal), dark on a lighter one (blue,
+ * yellow).
+ */
+const LIGHT_INK_UP_TO = 0.45;
+const inkOn = (fill) => (luminance(fill) <= LIGHT_INK_UP_TO ? "#ffffff" : INK);
+
 const WIDTH = 400;
 const HEIGHT = 225;
 const TILE = 52;
@@ -166,7 +181,7 @@ function render(spec) {
       .join("");
     return `<g>
     <rect x="${x - TILE / 2}" y="${y - TILE / 2}" width="${TILE}" height="${TILE}" rx="16" fill="${fill}" filter="url(#lift)" />
-    <g transform="translate(${x - 12} ${y - 12})" fill="none" stroke="${INK}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${iconBody(icon)}</g>
+    <g transform="translate(${x - 12} ${y - 12})" fill="none" stroke="${inkOn(fill)}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${iconBody(icon)}</g>
     ${badge}
     <text x="${x}" y="${y + TILE / 2 + 15}" text-anchor="middle">${label}</text>
   </g>`;

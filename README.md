@@ -17,7 +17,7 @@ and what it cannot know about your organization left as notes on the canvas, eac
 | ![Minimal chat](templates/minimal-chat/preview.svg) | **Minimal chat** — one state that answers each chat message. The smallest workflow to talk to, and the start of one of your own. | none |
 | ![Customer support chat](templates/customer-support-chat/preview.svg) | **Customer support chat** — answers customers in the chat, hands a conversation over to your support team, and takes refund requests to a person who approves or rejects them before the customer is emailed. | Microsoft Outlook |
 | ![Daily research](templates/daily-research/preview.svg) | **Daily research** — every morning, reads the pages you follow and searches the web for your topics, then emails you a short briefing with a link to every source. | Microsoft Outlook, and the platform's browser tools |
-| ![OneDrive wiki](templates/onedrive-wiki/preview.svg) | **OneDrive wiki** — turns the documents you drop into a OneDrive folder into a wiki the agent writes and keeps up to date, and answers questions from it in the chat, citing its pages. | Microsoft OneDrive |
+| ![OneDrive wiki](templates/onedrive-wiki/preview.svg) | **OneDrive wiki** — turns the documents you drop into a OneDrive folder into a wiki the agent writes and keeps up to date, and answers questions from it in the chat, citing its pages. | Microsoft OneDrive for its trigger, and Microsoft SharePoint for the mount that holds the wiki |
 
 ## Layout
 
@@ -50,8 +50,9 @@ connections:
 - `description` — one or two sentences saying what the workflow does, in the words of someone
   who will use it, not build it.
 - `order` — where the template is listed: lower first. The simplest template comes first.
-- `connections` — the collections whose tools the workflow grants (`microsoft-outlook`,
-  `microsoft-onedrive`), so a person sees before creating it what they will have to connect.
+- `connections` — the collections the workflow needs connected: for the tools it grants, its
+  triggers and the mounts it reads (`microsoft-outlook`, `microsoft-onedrive`,
+  `microsoft-sharepoint`), so a person sees before creating it what they will have to connect.
 
 ## The rules every template keeps
 

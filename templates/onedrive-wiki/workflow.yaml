@@ -1,10 +1,11 @@
 title: OneDrive wiki
 instructions: |-
-  You keep a wiki in the user's OneDrive: Markdown pages in the folder Wiki, which you write
-  and maintain from the documents that arrive in Wiki/Inbox. Wiki/index.md lists every page
-  with a one-line summary, and Wiki/log.md records every change, newest first. Link pages to
-  each other with relative Markdown links, name the source document of every fact, and never
-  invent one.
+  You keep a wiki in the user's OneDrive, mounted in your workspace as the folder wiki:
+  Markdown pages you write and maintain from the documents that arrive in wiki/inbox.
+  wiki/index.md lists every page with a one-line summary, and wiki/log.md records every
+  change, newest first. Link pages to each other with relative Markdown links, name the source
+  document of every fact, and never invent one. The mount is read live and folder by folder:
+  list a folder with ls rather than searching the whole wiki.
 runtime:
   engine: archmax-harness
   version: "2"
@@ -22,31 +23,35 @@ tools:
     - write_todos
     - archmax_eval
     - archmax_run
+mounts:
+  allow_always:
+    - mount: wiki
+      access: read_write
 metadata:
   notes:
     - id: n1
       text: |-
-        To do: connect Microsoft OneDrive, and create a folder Wiki in it holding the folders Inbox, sources and topics.
+        To do: mount the wiki. On the Files page choose Add mount, then Microsoft SharePoint, and connect it. Pick your OneDrive and a folder for the wiki holding the folders inbox, sources and topics, and name the mount wiki.
       x: 448
       y: 0
-      width: 288
-      height: 144
+      width: 304
+      height: 176
       color: yellow
     - id: n2
       text: |-
-        To do: on the New File trigger of Ingest a document, pick Wiki/Inbox as the folder to watch. Every file dropped there becomes wiki pages.
+        To do: on the New File trigger of Ingest a document, connect Microsoft OneDrive and pick the wiki's inbox folder. Every file dropped there becomes wiki pages.
       x: 448
-      y: 176
-      width: 288
-      height: 160
+      y: 208
+      width: 304
+      height: 144
       color: yellow
     - id: n3
       text: |-
         Ask the wiki answers from the pages Ingest a document wrote, and links them. Ask it to keep a good answer as a page of its own.
       x: 448
-      y: 368
-      width: 288
-      height: 144
+      y: 384
+      width: 304
+      height: 128
       color: blue
 states:
   ingest:
@@ -57,32 +62,20 @@ states:
         piece: microsoft-onedrive
         trigger: new_file
     instructions: |-
-      A document arrived in the watched folder; the firing names it, with its id and its folder.
+      A document arrived in the wiki's inbox; the firing names it. The same folder is
+      wiki/inbox in your workspace.
 
-      1. Download the document and read it.
-      2. Write its summary page, Wiki/sources/<document name>.md: what the document is, its key
-         points, and a link to the original.
-      3. Update each topic page under Wiki/topics/ that the document touches, or create one for
+      1. Read wiki/inbox/<its name>: a text or Markdown file with read_file, a PDF, Word file,
+         spreadsheet or slide deck with get_markdown.
+      2. Write its summary page, wiki/sources/<document name>.md: what the document is, its key
+         points, and where the original lies.
+      3. Update each topic page under wiki/topics/ that the document touches, or create one for
          a topic the wiki lacks. Add what is new, keep what is still true, and where the
          document contradicts a page, say so on the page rather than overwrite it.
-      4. List every new page in Wiki/index.md, and add one line to the top of Wiki/log.md: the
+      4. List every new page in wiki/index.md, and add one line to the top of wiki/log.md: the
          date, the document, and the pages you changed.
 
       Read a page before you replace it, and change only what the document changes.
-    tools:
-      allow:
-        - tool: microsoft-onedrive__onedrive_download_file
-          source: ap
-        - tool: microsoft-onedrive__onedrive_get_item
-          source: ap
-        - tool: microsoft-onedrive__onedrive_search_items
-          source: ap
-        - tool: microsoft-onedrive__onedrive_list_folder_children
-          source: ap
-        - tool: microsoft-onedrive__onedrive_create_text_file
-          source: ap
-        - tool: microsoft-onedrive__onedrive_replace_file_content
-          source: ap
     metadata:
       x: 0
       y: 40
@@ -98,24 +91,12 @@ states:
           - Which documents mention the budget for next year?
           - What changed in the wiki this week?
     instructions: >-
-      Answer from the wiki; the prompt includes the conversation so far. Read Wiki/index.md,
+      Answer from the wiki; the prompt includes the conversation so far. Read wiki/index.md,
       open the pages it points to, and answer with links to those pages and the documents they
       cite. When the wiki does not cover the question, say so and name the kind of document
       that would. When an answer is worth keeping and the user agrees, save it as a page under
-      Wiki/topics/, list it in the index and log it. This state has no transitions, so each
+      wiki/topics/, list it in the index and log it. This state has no transitions, so each
       answer ends the turn and the next message continues here.
-    tools:
-      allow:
-        - tool: microsoft-onedrive__onedrive_search_items
-          source: ap
-        - tool: microsoft-onedrive__onedrive_list_folder_children
-          source: ap
-        - tool: microsoft-onedrive__onedrive_download_file
-          source: ap
-        - tool: microsoft-onedrive__onedrive_create_text_file
-          source: ap
-        - tool: microsoft-onedrive__onedrive_replace_file_content
-          source: ap
     metadata:
       x: 0
       y: 280
