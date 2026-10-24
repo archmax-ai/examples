@@ -3,9 +3,6 @@ instructions: |-
   You are a helpful assistant for the people of this organization. Answer in the language
   the user writes in, keep answers short and concrete, and say plainly when you do not know
   something.
-runtime:
-  engine: archmax-harness
-  version: "2"
 tools:
   allow_always:
     - ls

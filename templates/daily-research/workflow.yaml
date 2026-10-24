@@ -2,9 +2,6 @@ title: Daily research
 instructions: |-
   You research the news for one reader and send them a short morning briefing. Report only
   what the sources say, link every item to its source, and leave out what you cannot verify.
-runtime:
-  engine: archmax-harness
-  version: "2"
 tools:
   allow_always:
     - ls

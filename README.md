@@ -25,7 +25,7 @@ and what it cannot know about your organization left as notes on the canvas, eac
 templates/<id>/template.yaml   # required: what the template is called, and what it needs
 templates/<id>/workflow.yaml   # required: the workflow a new one is created from
 templates/<id>/preview.svg     # its preview, drawn by scripts/render-previews.mjs
-templates/<id>/...             # anything else is copied with the workflow (hooks/, tests/)
+templates/<id>/...             # anything else is copied with the workflow (scripts/, tests/)
 ```
 
 One level: every direct child of `templates/` that holds both a `template.yaml` and a

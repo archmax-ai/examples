@@ -4,9 +4,6 @@ instructions: |-
   answer in the language the customer writes in. Never promise a refund, a delivery date or
   a price you have not been given: say what you know, and offer to hand over to a person
   instead.
-runtime:
-  engine: archmax-harness
-  version: "2"
 tools:
   allow_always:
     - ls

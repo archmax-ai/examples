@@ -6,9 +6,6 @@ instructions: |-
   change, newest first. Link pages to each other with relative Markdown links, name the source
   document of every fact, and never invent one. The mount is read live and folder by folder:
   list a folder with ls rather than searching the whole wiki.
-runtime:
-  engine: archmax-harness
-  version: "2"
 tools:
   allow_always:
     - ls
